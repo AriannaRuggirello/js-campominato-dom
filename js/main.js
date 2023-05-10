@@ -11,7 +11,7 @@
 
 
 let button = document.getElementById("play_button");
-
+let punteggio = 0;
 let gridElement = document.querySelector('div.grid')
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 button.addEventListener("click", 
@@ -49,18 +49,26 @@ button.addEventListener("click",
             
         // Quando l’utente clicca sulla cella
             newSquare.addEventListener('click', 
-            function(){
+            function(){   
+            // incremento puntegio
+                punteggio++;
+            
                 if(bombArr.includes(i)){
                       // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
                     newSquare.classList.add('clicked-false');
                     // emetto un messaggio in console con il numero della cella cliccata.
-                    console.log('bomba');
+                    alert('BOOM! Hai perso!' + ' Hai totalizzato: ' + punteggio + ' punti ')
+                    // reset dopo l'alert
+                    gridElement.innerHTML = ''
+
                 }
                 else{
                     // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle
                     newSquare.classList.add('clicked-true');
-                    // emetto un messaggio in console con il numero della cella cliccata.
-                    console.log(i);
+                    
+                    console.log(punteggio);
+                    
+                   
                 }
             })
         }
