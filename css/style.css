@@ -66,13 +66,15 @@ main{
 }
 
 .clicked-true{
-    background-color: #001533;
-    color: #00e064;
+    background-color: green;
+    color: white;
+   
 }
 
 .clicked-false{
     background-color: red;
-    color: #001533;
+    color: white;
+    
 }
 
 

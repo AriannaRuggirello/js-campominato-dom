@@ -60,6 +60,8 @@ button.addEventListener("click",
                     alert('BOOM! Hai perso!' + ' Hai totalizzato: ' + punteggio + ' punti ')
                     // reset dopo l'alert
                     gridElement.innerHTML = ''
+                    // punteggio riparte da zero
+                    punteggio = 0;
 
                 }
                 else{
