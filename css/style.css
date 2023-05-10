@@ -16,6 +16,7 @@
     align-items: center;
 }
 
+
 /* header */
 
 img{
@@ -31,6 +32,14 @@ button{
 }
 
 /* main */
+
+span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.fa-user{
+    padding-left: 30px;
+}
 
 main{
     height: calc(100vh - 100px);
@@ -84,3 +93,6 @@ main{
 footer{
     height: 50px;
 }
+
+
+
