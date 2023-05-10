@@ -71,13 +71,13 @@ main{
 }
 
 .clicked-true{
-    background-color: green;
-    color: white; 
+    background-color: greenyellow;
+    
 }
 
 .clicked-false{
     background-color: red;
-    color: white;  
+   
 }
 
 /* footer */

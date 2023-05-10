@@ -119,7 +119,7 @@ button.addEventListener("click",
                             newSquare.classList.add('clicked-true');
                             
                             userScore.innerHTML = punteggio
-                            console.log(punteggio);
+                            // console.log(punteggio);
                             
                         
                         }
