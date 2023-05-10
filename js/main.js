@@ -12,77 +12,58 @@
 
 let button = document.getElementById("play_button");
 
+let gridElement = document.querySelector('div.grid')
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 button.addEventListener("click", 
     function Game()
     {   
-        // seleziono il contenitore 
-        let grid = document.querySelector('div#grid_container');
-        grid.classList.remove("hidden");
-        // lo rendo visibile al clik sul pulpsante
-        grid.classList.add("visible");
         // reset dei numeri selezionati in pagina
-        let gridElement = document.querySelector('div.grid').innerHTML=''
+       gridElement.innerHTML = ''
+            
+        // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+        //array vuoto
+       let bombArr = [];
+
+        // Finché l'array non ha 16 elementi, genera numeri casuali unici tra 1 e 100 e li aggiunge all'array
+        while (bombArr.length < 16) {
+            let randomNum = Math.floor(Math.random() * 100) + 1;
+            // Se il numero non è già presente nell'array, lo aggiungo
+            if (!bombArr.includes(randomNum)) {
+                bombArr.push(randomNum);
+            }
+            }
+    
+            console.log(bombArr);
 
         // Ogni cella ha un numero progressivo, da 1 a 100.
         for(let i = 1; i <= 100 ; i++){
 
-            // creare l'elemento quadrato all'interno della griglia
-            var newSquare = createGridSquare('div','square-easy'); 
+        // creare l'elemento quadrato all'interno della griglia
+            const newSquare = createGridSquare('div','square-easy'); 
 
-            // numero ogni quadratino
-            var num = i;
+        // inserisco dentro alla griglia i quadratini
+            gridElement.append(newSquare);
+
+        // numero ogni quadratino
+            newSquare.innerHTML =i
             
-            // inserisco dentro alla griglia i quadratini
-            gridElement = document.querySelector('div.grid').append(newSquare)
-            // inserisco dentro ogni quadratino il numero
-            newSquare.append(num);
-        }
-        
-        // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-        //array vuoto
-        let bombArr = [];
-
-        // Finché l'array non ha 16 elementi, genera numeri casuali unici tra 1 e 100 e li aggiunge all'array
-        while (bombArr.length < 16) {
-        let randomNum = Math.floor(Math.random() * 100) + 1;
-        // Se il numero non è già presente nell'array, lo aggiungo
-        if (!bombArr.includes(randomNum)) {
-            bombArr.push(randomNum);
-        }
-        }
-        console.log(bombArr);
-
-         // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
-        if (num == bombArr) {
-             // Quando l’utente clicca sulla cella
-             newSquare.addEventListener('click', 
-             function(){
-                 // la cella cliccata si colora di azzurro 
-                 newSquare.classList.add('clicked-false');
-                 // emetto un messaggio in console con il numero della cella cliccata.
-                 // console.log(num);
-             })
-            
-        }
-        else{
-            // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle
-            // Quando l’utente clicca sulla cella
+        // Quando l’utente clicca sulla cella
             newSquare.addEventListener('click', 
             function(){
-                // la cella cliccata si colora di azzurro 
-                newSquare.classList.add('clicked-true');
-                // emetto un messaggio in console con il numero della cella cliccata.
-                // console.log(num);
+                if(bombArr.includes(i)){
+                      // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
+                    newSquare.classList.add('clicked-false');
+                    // emetto un messaggio in console con il numero della cella cliccata.
+                    console.log('bomba');
+                }
+                else{
+                    // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle
+                    newSquare.classList.add('clicked-true');
+                    // emetto un messaggio in console con il numero della cella cliccata.
+                    console.log(i);
+                }
             })
-
         }
-
-       
-
-
-        
-
     });
 
 

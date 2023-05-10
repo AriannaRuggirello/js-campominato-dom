@@ -37,15 +37,13 @@ main{
     background-color: #00e064;
   
 }
-.grid_container{
-    padding: 100px 0;
-}
+
 
 .grid{
     
     display: flex;
     flex-wrap: wrap;
-    border: #001533 2px solid;
+    /* border: #001533 2px solid; */
     width: 400px;
     height: 400px;
     margin: 0 auto ; 
@@ -67,12 +65,12 @@ main{
     border: 1px solid black; 
 }
 
-.square.clicked-true{
+.clicked-true{
     background-color: #001533;
     color: #00e064;
 }
 
-.square.clicked-false{
+.clicked-false{
     background-color: red;
     color: #001533;
 }
