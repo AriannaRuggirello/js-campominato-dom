@@ -22,15 +22,19 @@ button.addEventListener("click",
         let easyGame;
         let mediumGame;
         let hardGame;
-    
+        // se scelgo il livello easy avrò 100 caselle divise in righe di 10
         if(livelloSelezionato === 'Easy'){
             easyGame = createGameFunction(100,16,'div','square-easy');
         }
         if(livelloSelezionato === 'Medium'){
+        // se scelgo il livello medium avrò 81 caselle divise in righe di 9
+
             mediumGame = createGameFunction(81,16,'div','square-medium');
     
         }
         if(livelloSelezionato === 'Hard'){
+        // se scelgo il livello hard avrò 49 caselle divise in righe di 7
+
             hardGame = createGameFunction(49,16,'div','square-hard');
             
         }
@@ -63,62 +67,63 @@ button.addEventListener("click",
          return intArr;
     }
 
-
-    function createGameFunction(max,numMaxElementArr,tagType,classToAdd){
-// reset dei numeri selezionati in pagina
-gridElement.innerHTML = ''
-         
-// ARRAY 
-// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-let bombArr = createRandomArray (max,numMaxElementArr);
-console.log(bombArr);
-
-
-// FOR
-// Ogni cella ha un numero progressivo, da 1 a 100.
-for(let i = 1; i <= max ; i++)
-{
-    // creare l'elemento quadrato all'interno della griglia
-    const newSquare = createGridSquare(tagType,classToAdd); 
-
-    // inserisco dentro alla griglia i quadratini
-    gridElement.append(newSquare);
-
-    // numero ogni quadratino
-    newSquare.innerHTML = i
-    
-    // Quando l’utente clicca sulla cella
-    newSquare.addEventListener('click', 
-    function(){   
-    // incremento puntegio
-    punteggio++;
-    let userScore = document.getElementById('user-score');
-
-        // CONDIZIONE IF/ELSE
-            if(bombArr.includes(i))
-            {
-                // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
-                newSquare.classList.add('clicked-false');
-                // emetto un messaggio in console con il numero della cella cliccata.
-                alert('BOOM! Hai perso!' + ' Hai totalizzato: ' + (punteggio - 1) + ' punti ')
+    function createGameFunction(max,numMaxElementArr,tagType,classToAdd)
+    {
+        // reset dei numeri selezionati in pagina
+        gridElement.innerHTML = ''
             
-                // punteggio riparte da zero
-                punteggio = 0;
-                userScore = punteggio;
-                // reset dopo l'alert
-                gridElement.innerHTML = ''
-            }
-            else
-            {
-                // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle
-                newSquare.classList.add('clicked-true');
-                
-                userScore.innerHTML = punteggio
-                console.log(punteggio);
-                
+        // ARRAY 
+        // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+        let bombArr = createRandomArray (max,numMaxElementArr);
+        console.log(bombArr);
+
+
+        // FOR
+        // Ogni cella ha un numero progressivo, da 1 a 100.
+        for(let i = 1; i <= max ; i++)
+        {
+            // creare l'elemento quadrato all'interno della griglia
+            const newSquare = createGridSquare(tagType,classToAdd); 
+
+            // inserisco dentro alla griglia i quadratini
+            gridElement.append(newSquare);
+
+            // numero ogni quadratino
+            newSquare.innerHTML = i
             
-            }
-        })
-}
+            // Quando l’utente clicca sulla cella
+            newSquare.addEventListener('click', 
+            function()
+            {   
+                // incremento puntegio
+                punteggio++;
+                let userScore = document.getElementById('user-score');
+
+                    // CONDIZIONE IF/ELSE
+                        if(bombArr.includes(i))
+                        {
+                            // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
+                            newSquare.classList.add('clicked-false');
+                            // emetto un messaggio in console con il numero della cella cliccata.
+                            alert('BOOM! Hai perso!' + ' Hai totalizzato: ' + (punteggio - 1) + ' punti ')
+                        
+                            // punteggio riparte da zero
+                            punteggio = 0;
+                            userScore = punteggio;
+                            // reset dopo l'alert
+                            gridElement.innerHTML = ''
+                        }
+                        else
+                        {
+                            // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle
+                            newSquare.classList.add('clicked-true');
+                            
+                            userScore.innerHTML = punteggio
+                            console.log(punteggio);
+                            
+                        
+                        }
+            })
+        }
     }
     

@@ -16,7 +16,6 @@
     align-items: center;
 }
 
-
 /* header */
 
 img{
@@ -44,19 +43,16 @@ span{
 main{
     height: calc(100vh - 100px);
     background-color: #00e064;
-  
+    padding: 100px;
 }
 
 
 .grid{
-    
     display: flex;
     flex-wrap: wrap;
-    /* border: #001533 2px solid; */
     width: 400px;
     height: 400px;
     margin: 0 auto ; 
-    
 }
 
 .square-easy{
@@ -76,18 +72,13 @@ main{
 
 .clicked-true{
     background-color: green;
-    color: white;
-   
+    color: white; 
 }
 
 .clicked-false{
     background-color: red;
-    color: white;
-    
+    color: white;  
 }
-
-
-
 
 /* footer */
 footer{
